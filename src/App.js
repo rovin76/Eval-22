@@ -7,7 +7,7 @@ export default function App() {
     <div className="App">
       {/* <VideoPlayer /> */}
       <VideoPlayer />
-      <Users />
+      <Users data={[...data]} />
     </div>
   );
 }

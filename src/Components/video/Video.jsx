@@ -11,7 +11,7 @@ function VideoPlayer() {
     ref.current.pause();
   };
   const skipSecond = () => {
-    ref.current.play(ref.current.currentTime + 30);
+    ref.current.currentTime += 30;
   };
   return (
     <div>

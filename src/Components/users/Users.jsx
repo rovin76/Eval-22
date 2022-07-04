@@ -3,36 +3,10 @@ import Pagination from "../common/Pagination";
 import Filters from "./Filters";
 import UserCard from "./UserCard";
 import React, { useState, useEffect } from "react";
-function Users() {
-  const [data, setData] = useState([]);
-  const [page, setPage] = useState(5);
-  // get Todos
+function Users({ data }) {
+  const [page, setPage] = useState(0);
+  const [total, setTotal] = useState(10);
 
-  const getTodos = (page) => {
-    fetch(`http://localhost:8000/data/?_page=${page}&_limit=10`)
-      .then((res) => res.json())
-      .then((d) => {
-        setData(d);
-      });
-  };
-
-  // pagination
-
-  const paginationData = (page) => {
-    fetch(`http://localhost:8000/data/?_page=${page}`)
-      .then((res) => res.json())
-      .then((d) => {
-        setData(d);
-      });
-  };
-
-  const sortData = ({ asc }) => {
-    console.log(asc);
-  };
-
-  useEffect(() => {
-    getTodos();
-  }, []);
   return (
     <div>
       <div data-testid="loading-indicator">...loading</div>
@@ -41,8 +15,9 @@ function Users() {
         <UserCard name={item.name} />
       ))}
 
-      <Filters sortData={sortData} paginationData={paginationData} />
-      <Pagination />
+      {/* <Filters sortData={sortData} setLimit={setLimit} setSort={setSort}/>
+       */}
+      <Pagination data={data} total={total} />
     </div>
   );
 }

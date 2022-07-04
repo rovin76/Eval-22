@@ -4,7 +4,7 @@ function Pagination({ onChange, total, current }) {
   let pages = new Array(total).fill(0).map((item, index) => {
     // finish code with Button
     // it should be 1,2,3....n pages
-    
+    return <Button>{index + 1}</Button>;
   });
 
   return total !== 0 && pages;
