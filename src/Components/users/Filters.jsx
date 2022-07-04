@@ -6,7 +6,7 @@ const Filters = ({ sortData }) => {
           <input
             data-testid="order-filter"
             type="checkbox"
-            onChange={sortData}
+            onChange={(e) => sortData(e.target.value)}
           />
           Ascending
         </label>
