@@ -1,24 +1,30 @@
 import Button from "../common/Button";
-
+import React, { useRef } from "react";
 function VideoPlayer() {
+  const ref = useRef(null);
+
+  const start = () => {
+    ref.current.play();
+  };
+
+  const stop = () => {
+    ref.current.pause();
+  };
+  const skipSecond = () => {
+    ref.current.play(ref.current.currentTime + 30);
+  };
   return (
     <div>
-      <video data-testid="video-container" width="400" controls>
+      <video ref={ref} data-testid="video-container" width="400" controls>
         <source
           src="https://masai-course.s3.ap-south-1.amazonaws.com/material/videos/28028/guf8bBRwEwJsL01geZELebV0BmSX3jqkKNPVpLNV.mp4"
           type="video/mp4"
         />
       </video>
       <div>
-        <Button>
-          PLAY
-        </Button>
-        <Button>
-          PAUSE
-        </Button>
-        <Button>
-          SKIP 30 SECONDS
-        </Button>
+        <Button onClick={start}>Play</Button>
+        <Button onClick={stop}>PAUSE</Button>
+        <Button onClick={skipSecond}>SKIP 30 SECONDS</Button>
       </div>
     </div>
   );

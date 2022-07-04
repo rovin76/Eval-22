@@ -5,10 +5,11 @@ import UserCard from "./UserCard";
 import React, { useState, useEffect } from "react";
 function Users() {
   const [data, setData] = useState([]);
+  const [page, setPage] = useState(5);
   // get Todos
 
-  const getTodos = () => {
-    fetch(`http://localhost:8000/data/`)
+  const getTodos = (page) => {
+    fetch(`http://localhost:8000/data/?_page=${page}&_limit=10`)
       .then((res) => res.json())
       .then((d) => {
         setData(d);
