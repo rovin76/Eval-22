@@ -15,23 +15,8 @@ function Users() {
       });
   };
 
-  const sortData = ({ type, checked }) => {
-    console.log(type, checked);
-    if (value === checked) {
-      return fetch(`http://localhost:8000/data/?_sort=name&_order=asc`)
-        .then((res) => res.json())
-        .then((d) => {
-          console.log(d);
-          setData(d);
-        });
-    } else {
-      return fetch(`http://localhost:8000/data/`)
-        .then((res) => res.json())
-        .then((d) => {
-          console.log(d);
-          setData(d);
-        });
-    }
+  const sortData = ({ asc }) => {
+    console.log(asc);
   };
 
   useEffect(() => {
