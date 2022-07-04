@@ -7,8 +7,18 @@ function Users() {
   const [data, setData] = useState([]);
   // get Todos
 
-  const getTodos = (fakeFetch) => {
+  const getTodos = () => {
     fetch(`http://localhost:8000/data/`)
+      .then((res) => res.json())
+      .then((d) => {
+        setData(d);
+      });
+  };
+
+  // pagination
+
+  const paginationData = (page) => {
+    fetch(`http://localhost:8000/data/?_page=${page}`)
       .then((res) => res.json())
       .then((d) => {
         setData(d);
@@ -30,7 +40,7 @@ function Users() {
         <UserCard name={item.name} />
       ))}
 
-      <Filters sortData={sortData} />
+      <Filters sortData={sortData} paginationData={paginationData} />
       <Pagination />
     </div>
   );

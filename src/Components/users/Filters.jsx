@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-const Filters = ({ sortData }) => {
+const Filters = ({ sortData, paginationData }) => {
   const [page, setPage] = useState(1);
 
   useEffect(() => {
-    console.log(page);
+    paginationData(page);
   }, [page]);
 
   const handleOnChange = (e) => {
